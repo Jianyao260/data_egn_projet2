@@ -16,6 +16,16 @@ pipeline{
       }
     }
     
+	stage('User acceptance'){
+      steps{
+        script{
+          if (env.BRANCH_NAME == 'main' ) {
+            input 'Do you want to push?'
+          }
+        }
+      }
+    }
+	
 	
 	stage('Release'){
       steps{
